@@ -1,0 +1,36 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERIE MANAGER
+
+/*
+0-600px : mobile
+600-900px : table portrait
+900-1200px : tablet landscape
+1200px : normal styles
+1800px+ : big desktop
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == $big-desktop {
+    @media only screen and (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
